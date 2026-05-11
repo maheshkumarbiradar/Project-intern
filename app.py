@@ -362,10 +362,10 @@ def generate_pdf(result, image, uploaded_name, hospitals, info, city):
 
 # ── Sidebar ───────────────────────────────────────────────────────────────────
 with st.sidebar:
-    st.markdown("## 🧠 MedVision AI")
+    st.markdown("## MedVision AI")
     st.markdown("*ResNet18 · Transfer Learning · 4 Classes*")
     st.divider()
-    st.markdown("### ⚙️ Settings")
+    st.markdown("### Settings")
     model_path = st.text_input("Model path", value="best_model.pth")
     city       = st.selectbox("Your city (for doctor recs)", get_available_cities())
     top_n      = st.slider("Hospitals to show", min_value=1, max_value=5, value=3)
@@ -382,24 +382,24 @@ with st.sidebar:
     st.divider()
 
     # ── MRI Checker link in sidebar ───────────────────────────────────────────
-    st.markdown("### 🔬 Tools")
+    st.markdown("###  Tools")
     st.markdown("""
     <a href="https://medvisionai-compare.streamlit.app/" target="_blank" style="text-decoration:none;">
         <div class="link-card">
-            <div style="font-size:1.5rem;">🔬</div>
+            <div style="font-size:1.5rem;"></div>
             <div style="font-weight:700; color:#e2e8f0; margin:0.3rem 0;">MRI Compatibility</div>
             <div style="font-size:0.78rem; color:#64748b;">Check image vs training data</div>
         </div>
     </a>
     """, unsafe_allow_html=True)
     st.divider()
-    st.caption("⚠️ For educational use only. Always consult a qualified physician.")
+    st.caption(" For educational use only. Always consult a qualified physician.")
 
 
 # ── Main header ───────────────────────────────────────────────────────────────
 col_title, col_tool_btn = st.columns([3, 1])
 with col_title:
-    st.markdown("<h1 style='font-size:2.6rem; margin-bottom:0.2rem;'>🧠 MedVision AI</h1>",
+    st.markdown("<h1 style='font-size:2.6rem; margin-bottom:0.2rem;'> MedVision AI</h1>",
                 unsafe_allow_html=True)
     st.markdown("<p style='color:#94a3b8; font-size:1.05rem;'>Upload an MRI image to classify tumor type and find specialist doctors nearby.</p>",
                 unsafe_allow_html=True)
@@ -410,7 +410,7 @@ with col_tool_btn:
         <div style="background:linear-gradient(135deg,#0f1f3a,#0a1628);
                     border:1px solid #3b82f655; border-radius:12px;
                     padding:0.85rem 1rem; text-align:center; cursor:pointer;">
-            <div style="font-size:1.3rem;">🔬</div>
+            <div style="font-size:1.3rem;"></div>
             <div style="font-size:0.8rem; font-weight:700; color:#3b82f6; margin-top:3px;">
                 MRI Compatibility
             </div>
@@ -425,7 +425,7 @@ col_upload, col_result = st.columns([1, 1], gap="large")
 
 # ── Upload column ─────────────────────────────────────────────────────────────
 with col_upload:
-    st.markdown("### 📤 Upload MRI Image")
+    st.markdown("###  Upload MRI Image")
     uploaded = st.file_uploader(
         "Drag and drop or click to browse",
         type=["jpg", "jpeg", "png", "dcm"],
@@ -455,14 +455,14 @@ with col_upload:
             st.warning(f"Model file '{model_path}' not found. Train first with: python train.py")
             st.stop()
 
-        analyze_btn = st.button("🔍 Analyze MRI")
+        analyze_btn = st.button(" Analyze MRI")
     else:
-        st.info("👆 Upload a brain MRI image to get started.")
+        st.info(" Upload a brain MRI image to get started.")
         analyze_btn = False
 
 # ── Result column ─────────────────────────────────────────────────────────────
 with col_result:
-    st.markdown("### 📊 Analysis Results")
+    st.markdown("###  Analysis Results")
 
     if uploaded and analyze_btn:
         with st.spinner("Analyzing MRI scan..."):
@@ -524,7 +524,7 @@ with col_result:
     else:
         st.markdown("""
         <div class="card" style="text-align:center; padding:3rem 1rem; color:#475569;">
-            <div style="font-size:3rem;">🩻</div>
+            <div style="font-size:3rem;"></div>
             <div style="margin-top:1rem;">Upload and analyze an MRI image<br>to see results here.</div>
         </div>
         """, unsafe_allow_html=True)
@@ -554,7 +554,7 @@ if "result" in st.session_state:
                 )
                 pdf_name = f"MedVision_Report_{label}_{datetime.datetime.now().strftime('%Y%m%d_%H%M')}.pdf"
                 st.download_button(
-                    label="📄 Download PDF Report",
+                    label=" Download PDF Report",
                     data=pdf_bytes,
                     file_name=pdf_name,
                     mime="application/pdf",
@@ -573,14 +573,14 @@ if "result" in st.session_state:
                         font-family:'Syne',sans-serif; font-weight:700;
                         font-size:1rem; color:white; cursor:pointer;
                         display:block; line-height:1.5;">
-                🔬 MRI Compatibility Checker
+                 MRI Compatibility Checker
             </div>
         </a>
         """, unsafe_allow_html=True)
 
     # Button 3 — New Scan
     with btn_col3:
-        if st.button("🔄 New Scan", use_container_width=True):
+        if st.button(" New Scan", use_container_width=True):
             for key in ["result", "image", "filename"]:
                 if key in st.session_state:
                     del st.session_state[key]
@@ -589,7 +589,7 @@ if "result" in st.session_state:
     st.divider()
 
     # ── Doctor Recommendations ────────────────────────────────────────────────
-    st.markdown("## 🏥 Doctor & Hospital Recommendations")
+    st.markdown("##  Doctor & Hospital Recommendations")
 
     col_info, col_hospitals = st.columns([1, 2], gap="large")
 
@@ -637,7 +637,7 @@ if "result" in st.session_state:
                                 {h['name']}
                             </div>
                             <div style="color:#94a3b8; font-size:0.85rem; margin-top:2px;">
-                                📍 {h['address']}
+                                 {h['address']}
                             </div>
                         </div>
                         <div style="text-align:right; color:#fbbf24; font-size:0.85rem;">
@@ -645,7 +645,7 @@ if "result" in st.session_state:
                         </div>
                     </div>
                     <div style="margin-top:0.6rem; font-size:0.85rem; color:#64748b;">
-                        📞 {h['phone']} &nbsp;·&nbsp;
+                         {h['phone']} &nbsp;·&nbsp;
                         <a href="{h['website']}" target="_blank"
                            style="color:#3b82f6; text-decoration:none;">Visit Website →</a>
                     </div>
@@ -655,5 +655,5 @@ if "result" in st.session_state:
             st.info(f"No hospitals found in {city}. Try a different city in the sidebar.")
 
     st.divider()
-    st.caption("⚠️ Medical Disclaimer: This tool is for educational purposes only. "
+    st.caption(" Medical Disclaimer: This tool is for educational purposes only. "
                "Always consult a qualified physician for medical decisions.")
