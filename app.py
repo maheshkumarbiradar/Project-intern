@@ -566,7 +566,7 @@ if "result" in st.session_state:
     # Button 2 — Open MRI Checker
     with btn_col2:
         st.markdown("""
-        <a href="http://localhost:8502" target="_blank" style="text-decoration:none;">
+        <a href="https://medvisionai-compare.streamlit.app/" target="_blank" style="text-decoration:none;">
             <div style="background:linear-gradient(135deg,#1e3a5f,#0f2d4a);
                         border:1px solid #3b82f666; border-radius:10px;
                         padding:0.62rem 1rem; text-align:center;
