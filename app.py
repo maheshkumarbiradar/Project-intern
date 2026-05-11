@@ -384,7 +384,7 @@ with st.sidebar:
     # ── MRI Checker link in sidebar ───────────────────────────────────────────
     st.markdown("### 🔬 Tools")
     st.markdown("""
-    <a href="http://localhost:8502" target="_blank" style="text-decoration:none;">
+    <a href="https://medvisionai-compare.streamlit.app/" target="_blank" style="text-decoration:none;">
         <div class="link-card">
             <div style="font-size:1.5rem;">🔬</div>
             <div style="font-weight:700; color:#e2e8f0; margin:0.3rem 0;">MRI Compatibility</div>
@@ -406,7 +406,7 @@ with col_title:
 with col_tool_btn:
     st.markdown("<div style='height:1.2rem'></div>", unsafe_allow_html=True)
     st.markdown("""
-    <a href="http://localhost:8502" target="_blank" style="text-decoration:none;">
+    <a href="https://medvisionai-compare.streamlit.app/" target="_blank" style="text-decoration:none;">
         <div style="background:linear-gradient(135deg,#0f1f3a,#0a1628);
                     border:1px solid #3b82f655; border-radius:12px;
                     padding:0.85rem 1rem; text-align:center; cursor:pointer;">
